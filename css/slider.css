@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #fef8f9;
+  background-color: #212121;
 }
 ul {
   list-style: none;
@@ -15,26 +15,28 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 .slider-wrapper {
-  max-width: 800px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 50px;
-}
-.slider {
-  box-shadow: 10px 10px 20px rgba(94, 47, 59, .2);
+ width: 100%;
+ position: relative;
 }
 .slide-img {
   display: none;
   width: 100%;
   object-fit: cover;
+  filter: brightness(.5);
 }
 .slider-active {
   display: block;
   animation: fadeImg .8s;
 }
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
 .slider-controller {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 .arrow {
   padding: 20px 5px;
@@ -46,7 +48,7 @@ a {
 }
 .arrow-icon {
   display: block;
-  color: #3c376f;
+  color: #fff;
   font-size: 32px;
   transform: translateX(0px);
   transition: transform .3s ease;

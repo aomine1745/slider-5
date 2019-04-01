@@ -1,34 +1,33 @@
-const items = document.querySelectorAll('img');
-const itemCount = items.length;
-const nextItem = document.querySelector('.next');
-const previousItem = document.querySelector('.previous');
-let count = 0;
+const $sliderImg = document.querySelectorAll('.slide-img'),
+$nextItem = document.querySelector('.next'),
+$previousItem = document.querySelector('.previous'),
+sliderImgCount = $sliderImg.length - 1;
+var count = 0;
+var autoPlay = setInterval(showNextItem, 4000);
+
+$nextItem.addEventListener('click', showNextItem);
+$previousItem.addEventListener('click', showPreviousItem);
 
 function showNextItem() {
-  items[count].classList.remove('active');
-
-  if(count < itemCount - 1) {
-    count++;
-  } else {
-    count = 0;
-  }
-
-  items[count].classList.add('active');
-  console.log(count);
+	$sliderImg[count].classList.remove('slider-active');
+	if (count < sliderImgCount) {
+		count++;
+	}else {
+		count = 0;
+	}
+	$sliderImg[count].classList.add('slider-active');
+	clearInterval(autoPlay);
+	autoPlay = setInterval(showNextItem, 4000);
 }
 
 function showPreviousItem() {
-  items[count].classList.remove('active');
-
-  if(count > 0) {
-    count--;
-  } else {
-    count = itemCount - 1;
-  }
-
-  items[count].classList.add('active');
-  console.log(count);
+	$sliderImg[count].classList.remove('slider-active');
+	if (count > 0) {
+		count--;
+	}else {
+		count = sliderImgCount;
+	}
+	$sliderImg[count].classList.add('slider-active');
+	clearInterval(autoPlay);
+	autoPlay = setInterval(showNextItem, 4000);
 }
-
-nextItem.addEventListener('click', showNextItem);
-previousItem.addEventListener('click', showPreviousItem);
